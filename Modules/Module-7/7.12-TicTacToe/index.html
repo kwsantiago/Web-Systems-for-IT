@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+   <title>Tic-Tac-Toe</title>
+   <style>
+      td {
+         border: 1px solid lightblue;
+         padding: 10px;
+         font-size: 64pt;
+         font-family: Courier;
+         width: 100px;
+         height: 100px;
+         text-align: center;
+      }
+   </style>
+   <script src="tictactoe.js"></script>
+
+   <body>
+      <h1>Tic-Tac-Toe</h1>
+
+      <!-- 3x3 table for the game board -->
+      <table id="gameBoard">
+         <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+         </tr>
+         <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+         </tr>
+         <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+         </tr>
+      </table>
+      <p id="turnInfo">TURN INFO</p>
+      <input id="newGameButton" type="button" value="New game">
+   </body>
+</html>
