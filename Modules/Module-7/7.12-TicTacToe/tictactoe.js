@@ -33,15 +33,25 @@ function getGameBoard() {
 }
 
 function newGame() {
-	// TODO: Complete the function
+    clearTimeout();
+    computerMoveTimeout = 0;
+    for (let i = 0; i < 6; i++) {
+            document.getElementById("gameBoard").innerHTML = "&nbsp";
+        }
+    playerTurn = true;
+    document.getElementById("turnInfo").value = "Your turn";
 }
 
 function cellClicked(cell) {
-	// TODO: Complete the function
+    document.getElementById(cell).innerHTML = "X";
+    document.getElementById(cell).color = "red";
+    switchTurn();
 }
 
 function switchTurn() {
-	// TODO: Complete the function
+    // implement
+    playerTurn = true;
+    // implement
 }
 
 function makeComputerMove() {
