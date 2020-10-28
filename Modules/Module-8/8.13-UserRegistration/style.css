@@ -18,10 +18,9 @@ body {
 }
 
 input {
-  border: 1px solid #aaa;
+  border: 2px solid rgb(255, 0, 0);
 }
 
 li {
-  display: none;
   color: red;
 }
