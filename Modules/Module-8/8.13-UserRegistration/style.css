@@ -1,0 +1,27 @@
+html, body {
+  height: 100%;
+}
+
+html {
+  display: table;
+  margin: auto;
+}
+
+body {
+  background-color: lightgray;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#formErrors {
+  display: none;
+}
+
+input {
+  border: 1px solid #aaa;
+}
+
+li {
+  display: none;
+  color: red;
+}
