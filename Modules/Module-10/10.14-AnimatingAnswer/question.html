@@ -11,22 +11,20 @@
       #answer {
          color: white;
          width: 100px;
-
-         /* Part of your solution goes here */
-
+         animation-fill-mode: forwards
       }
 
-      /* moveFraction goes here */
-
+      @keyframes moveFraction {
+        from {top: 0px;}
+        to {top: 200px;}
+      }
 
       #question {
-         /* Part of your solution goes here */
-
+        transition: transform 0.6s ease-in-out 0s;
       }
 
       #question:hover {
-         /* Part of your solution goes here */
-
+        transform: scale(0.9);
       }
       
       span {
