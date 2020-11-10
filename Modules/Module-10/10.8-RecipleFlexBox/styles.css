@@ -59,6 +59,11 @@ header {
    justify-content: space-between;
 }
 
+.summary > div > div{
+   display: flex;
+   justify-content: space-between;
+}
+
 .related-content {
    margin-left: 100px;
 }
