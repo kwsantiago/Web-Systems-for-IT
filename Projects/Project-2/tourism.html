@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link href="main.css" rel="stylesheet">
 <head>
     <title>Tourism In Curacao</title>
 </head>
 <body>
   <img src="./img/beach-header.jpeg">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-blue">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,7 +19,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="./food.html">Food</a>
@@ -22,6 +27,13 @@
         <li class="nav-item">
           <a class="nav-link" href="./tourism.html">Tourism</a>
         </li>
+        <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="links">Useful Links</a>
+                    <div class="dropdown-menu">
+                        <a href="https://www.curacao.com/" class="dropdown-item">Curacao Website</a>
+                        <a href="https://travel.state.gov/" class="dropdown-item">Travel Advisory</a>
+                    </div>
+                </li>
       </ul>
     </div>
   </nav>
@@ -29,49 +41,51 @@
     <h1>Tourism In Curacao</h1>
     <p id="author-name-and-date">Kyle W. Santiago | Oct. 3, 2020</p>
 
-    <div class="tourism-overview">
-
-    <table style="width:50%">
-      <tr>
-        <th>Year</th>
-        <th>Total Number of Inbound Tourists</th>
-      </tr>
-      <tr>
-        <td>2010</td>
-        <td>334,645</td>
-      </tr>
-      <tr>
-        <td>2011</td>
-        <td>379,284</td>
-      </tr>
-      <tr>
-        <td>2012</td>
-        <td>405,764</td>
-      </tr>
-      <tr>
-        <td>2013</td>
-        <td>422,151</td>
-      </tr>
-      <tr>
-        <td>2014</td>
-        <td>427,104</td>
-      </tr>
-      <tr>
-        <td>2015</td>
-        <td>408,442</td>
-      </tr>
-      <tr>
-        <td>2016</td>
-        <td>441,356</td>
-      </tr>
-      <tr>
-        <td>2017</td>
-        <td>398,836</td>
-      </tr>
-      <tr>
-        <td>2018</td>
-        <td>431,692</td>
-      </tr>
+    <table class="table table-hover table-sm">
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Total Number of Inbound Tourists</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2010</td>
+          <td>334,645</td>
+        </tr>
+        <tr>
+          <td>2011</td>
+          <td>379,284</td>
+        </tr>
+        <tr>
+          <td>2012</td>
+          <td>405,764</td>
+        </tr>
+        <tr>
+          <td>2013</td>
+          <td>422,151</td>
+        </tr>
+        <tr>
+          <td>2014</td>
+          <td>427,104</td>
+        </tr>
+        <tr>
+          <td>2015</td>
+          <td>408,442</td>
+        </tr>
+        <tr>
+          <td>2016</td>
+          <td>441,356</td>
+        </tr>
+        <tr>
+          <td>2017</td>
+          <td>398,836</td>
+        </tr>
+        <tr>
+          <td>2018</td>
+          <td>431,692</td>
+        </tr>
+      </tbody>
     </table>
 
     <p>Tourism is one of the biggest industries in Curacao. At least 20% of the economy is contributed to by tourism. In the above table, you can see the amount of inbound toursists to the island. Due to the COVID-19 pandemic, tourism has fallen off and the economy has taken a large hit on the island.</p>
