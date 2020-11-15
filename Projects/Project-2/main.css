@@ -56,6 +56,10 @@ a {
   color: yellow;
 }
 
+.navbar-nav .dropdown-menu {
+  background-color: blue;
+}
+
 table, th, td {
   border: 1px solid white;
   text-align: center;
