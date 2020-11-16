@@ -5,6 +5,83 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  let modalId = $('#image-gallery');
+
+$(document)
+  .ready(function () {
+    loadGallery(true, 'a.thumbnail');
+    function disableButtons(counter_max, counter_current) {
+      $('#show-previous-image, #show-next-image')
+        .show();
+      if (counter_max === counter_current) {
+        $('#show-next-image')
+          .hide();
+      } else if (counter_current === 1) {
+        $('#show-previous-image')
+          .hide();
+      }
+    }
+    function loadGallery(setIDs, setClickAttr) {
+      let current_image,
+        selector,
+        counter = 0;
+      $('#show-next-image, #show-previous-image')
+        .click(function () {
+          if ($(this)
+            .attr('id') === 'show-previous-image') {
+            current_image--;
+          } else {
+            current_image++;
+          }
+          selector = $('[data-image-id="' + current_image + '"]');
+          updateGallery(selector);
+        });
+      function updateGallery(selector) {
+        let $sel = selector;
+        current_image = $sel.data('image-id');
+        $('#image-gallery-title')
+          .text($sel.data('title'));
+        $('#image-gallery-image')
+          .attr('src', $sel.data('image'));
+        disableButtons(counter, $sel.data('image-id'));
+      }
+      if (setIDs == true) {
+        $('[data-image-id]')
+          .each(function () {
+            counter++;
+            $(this)
+              .attr('data-image-id', counter);
+          });
+      }
+      $(setClickAttr)
+        .on('click', function () {
+          updateGallery($(this));
+        });
+    }
+  });
+$(document)
+  .keydown(function (e) {
+    switch (e.which) {
+      case 37:
+        if ((modalId.data('bs.modal') || {})._isShown && $('#show-previous-image').is(":visible")) {
+          $('#show-previous-image')
+            .click();
+        }
+        break;
+
+      case 39:
+        if ((modalId.data('bs.modal') || {})._isShown && $('#show-next-image').is(":visible")) {
+          $('#show-next-image')
+            .click();
+        }
+        break;
+      default:
+        return;
+    }
+    e.preventDefault();
+  });
+</script>
 <link href="main.css" rel="stylesheet">
 <head>
     <title>Where I'm From: Curacao</title>
@@ -56,109 +133,70 @@
 
     <h1>Cool Things To Do On the Island</h1>
 
-    <div class="row">
+    <div class="container">
+	<div class="row">
+		<div class="row">
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Go scuba diving"
+                   data-image="./img/scuba.jpeg"
+                   data-target="#image-gallery">
+                    <img class="img-thumbnail"
+                         src="./img/scuba.jpeg"
+                         alt="Another alt text">
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Kiss a dolphin"
+                   data-image="./img/dolphin.jpeg"
+                   data-target="#image-gallery">
+                    <img class="img-thumbnail"
+                         src="./img/dolphin.jpeg"
+                         alt="Another alt text">
+                </a>
+            </div>
 
-  <div class="col-lg-4 col-md-12 mb-4">
-    <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-body mb-0 p-0">
-            <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-              <iframe class="embed-responsive-item" src="./img/scuba.jpeg"
-                allowfullscreen></iframe>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Climb the mountains"
+                   data-image="./img/mt.jpeg"
+                   data-target="#image-gallery">
+                    <img class="img-thumbnail"
+                         src="./img/mt.jpeg"
+                         alt="Another alt text">
+                </a>
             </div>
-          </div>
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Go to the beach"
+                   data-image="./img/beach2.jpeg"
+                   data-target="#image-gallery">
+                    <img class="img-thumbnail"
+                         src="./img/beach2.jpeg"
+                         alt="Another alt text">
+                </a>
+            </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <a><img class="img-fluid z-depth-1" src="./img/scuba.jpeg"
-        data-toggle="modal" data-target="#modal1"></a>
+        <div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="image-gallery-title"></h4>
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img id="image-gallery-image" class="img-responsive col-md-12" src="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary float-left" id="show-previous-image"><i class="fa fa-arrow-left"></i>
+                        </button>
 
-  </div>
-  <div class="col-lg-4 col-md-6 mb-4">
-    <div class="modal fade" id="modal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-body mb-0 p-0">
-            <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-              <iframe class="embed-responsive-item" src="./img/dolphin.jpeg"
-                allowfullscreen></iframe>
+                        <button type="button" id="show-next-image" class="btn btn-secondary float-right"><i class="fa fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-    <a><img class="img-fluid z-depth-1" src="./img/dolphin.jpeg"
-        data-toggle="modal" data-target="#modal6"></a>
-  </div>
-  <div class="col-lg-4 col-md-6 mb-4">
-    <div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-body mb-0 p-0">
-            <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-              <iframe class="embed-responsive-item" src="./img/mt.jpeg"
-                allowfullscreen></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a><img class="img-fluid z-depth-1" src="./img/mt.jpeg"
-        data-toggle="modal" data-target="#modal4"></a>
-  </div>
-</div>
-<div class="row">
-  <div class="col-lg-4 col-md-12 mb-4">
-    <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-body mb-0 p-0">
-            <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-              <iframe class="embed-responsive-item" src="./img/food.jpeg"
-                allowfullscreen></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a><img class="img-fluid z-depth-1" src="./img/food.jpeg"
-        data-toggle="modal" data-target="#modal2"></a>
-  </div>
-  <div class="col-lg-4 col-md-6 mb-4">
-    <div class="modal fade" id="modal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-body mb-0 p-0">
-            <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-              <iframe class="embed-responsive-item" src="./img/punda.jpeg"
-                allowfullscreen></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a><img class="img-fluid z-depth-1" src="./img/punda.jpeg"
-        data-toggle="modal" data-target="#modal5"></a>
-  </div>
-  <div class="col-lg-4 col-md-6 mb-4">
-    <div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-body mb-0 p-0">
-            <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-              <iframe class="embed-responsive-item" src="./img/beach2.jpeg"
-                allowfullscreen></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a><img class="img-fluid z-depth-1" src="./img/beach2.jpeg"
-        data-toggle="modal" data-target="#modal3"></a>
-    </div>
-  </div>
-
   </div>
 
   <footer class="page-footer font-small blue pt-4">
